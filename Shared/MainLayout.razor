@@ -1,0 +1,40 @@
+﻿@inherits LayoutComponentBase
+@inject AMS.Services.AttendanceService AttendanceService
+@implements IDisposable
+
+<div class="page">
+    @if (AttendanceService.CurrentUser != null)
+    {
+        <div class="sidebar">
+            <NavMenu />
+        </div>
+    }
+
+   <main>
+    @if (AttendanceService.CurrentUser != null)
+    {
+        <div class="top-row px-4">
+            <span class="me-3">Logged in as: <strong>@AttendanceService.CurrentUser.FullName</strong></span>
+        </div>
+    }
+
+    <article class="content px-4">
+        @Body
+    </article>
+</main>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        // Subscribe to notify the layout to re-render when user logs in/out
+        AttendanceService.OnNotify += RefreshLayout;
+    }
+
+    private void RefreshLayout() => InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        AttendanceService.OnNotify -= RefreshLayout;
+    }
+}

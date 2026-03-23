@@ -1,0 +1,39 @@
+@page "/login"
+@using AMS.Models 
+@inject AMS.Services.AttendanceService MyAttendanceService
+@inject NavigationManager MyNavManager
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg border-0" style="width: 400px;">
+        <div class="card-header bg-primary text-white text-center py-3">
+            <h4 class="mb-0">AMS Login</h4>
+        </div>
+        <div class="card-body p-4">
+            @if (!string.IsNullOrEmpty(errorMessage)) {
+                <div class="alert alert-danger mb-3">@errorMessage</div>
+            }
+            <div class="mb-3">
+                <label class="form-label fw-bold">Email Address</label>
+                <input type="email" class="form-control" @bind="email" autocomplete="off" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold">Password</label>
+                <input type="password" class="form-control" @bind="password" />
+            </div>
+            <button class="btn btn-primary w-100 py-2 shadow-sm" @onclick="HandleLogin">Sign In</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string email = "";
+    private string password = "";
+    private string? errorMessage;
+
+    private async Task HandleLogin() {
+        errorMessage = null;
+        var user = await MyAttendanceService.Login(email, password);
+        if (user != null) MyNavManager.NavigateTo("/punchclock");
+        else errorMessage = "Invalid email or password.";
+    }
+}

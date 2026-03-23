@@ -1,0 +1,69 @@
+@page "/timesheet-report"
+@using AMS.Models
+@using AMS.Services
+@inject AttendanceService AttendanceService
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3>Timesheet Report</h3>
+            <button class="btn btn-outline-secondary btn-sm" @onclick='() => Nav.NavigateTo("/punchclock")'>
+                ← Back to Menu
+            </button>
+        </div>
+        <button class="btn btn-success" @onclick="DownloadCsv">
+            <span class="bi bi-download"></span> Export CSV
+        </button>
+    </div>
+
+    <div class="card shadow-sm">
+        <table class="table table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Employee</th>
+                    <th>Date & Time</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (reportData != null)
+                {
+                    @foreach (var entry in reportData)
+                    {
+                        <tr>
+                            <td>@entry.EmployeeName</td>
+                            <td>@entry.Date</td>
+                            <td>
+                                <span class="badge @(entry.IsPunchIn ? "bg-success" : "bg-danger")">
+                                    @(entry.IsPunchIn ? "IN" : "OUT")
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<TimesheetEntry>? reportData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AttendanceService.CurrentUser?.Role < UserRole.Supervisor)
+        {
+            Nav.NavigateTo("/punchclock");
+            return;
+        }
+        reportData = await AttendanceService.GetTimesheetReport();
+    }
+
+    private async Task DownloadCsv()
+    {
+        var csvContent = await AttendanceService.GetTimesheetCsv();
+        await JS.InvokeVoidAsync("downloadFile", "AMS_History.csv", csvContent);
+    }
+}

@@ -1,0 +1,57 @@
+﻿@using AMS.Models
+@inject AMS.Services.AttendanceService AttendanceService
+@inject NavigationManager Nav
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">AMS System</a>
+    </div>
+</div>
+
+<div class="flex-column">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="punchclock" Match="NavLinkMatch.All">
+                <span class="bi bi-clock-fill" aria-hidden="true"></span> Punch Clock
+            </NavLink>
+        </div>
+
+        @if (AttendanceService.CurrentUser?.Role >= UserRole.Supervisor)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="supervisor-dashboard">
+                    <span class="bi bi-speedometer2" aria-hidden="true"></span> Supervisor
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="user-management">
+                    <span class="bi bi-people-fill" aria-hidden="true"></span> User Management
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="timesheet-report">
+                    <span class="bi bi-file-earmark-text" aria-hidden="true"></span> Reports
+                </NavLink>
+            </div>
+        }
+
+        <div class="nav-item px-3 mt-4">
+            <button class="btn btn-link nav-link text-white w-100 text-start" @onclick="Logout">
+                <span class="bi bi-box-arrow-right" aria-hidden="true"></span> Logout
+            </button>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private void Logout()
+    {
+        AttendanceService.Logout();
+        Nav.NavigateTo("/login");
+    }
+
+    protected override void OnInitialized()
+    {
+        AttendanceService.OnNotify += StateHasChanged;
+    }
+}

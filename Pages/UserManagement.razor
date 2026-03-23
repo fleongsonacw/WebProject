@@ -1,0 +1,54 @@
+@page "/user-management"
+@using AMS.Models
+@inject AMS.Services.AttendanceService AttendanceService
+@inject NavigationManager Nav
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>User Management</h3>
+        <button class="btn btn-primary" @onclick="AddNewUser">Add New User</button>
+    </div>
+
+    <table class="table table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td>@user.FullName</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                    <td>@(user.IsActive ? "Active" : "Inactive")</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-secondary" @onclick="() => EditUser(user)">Edit</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private List<User> users = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AttendanceService.CurrentUser?.Role < UserRole.Supervisor)
+        {
+            Nav.NavigateTo("/punchclock");
+            return;
+        }
+        users = await AttendanceService.GetAllUsers();
+    }
+
+    private void AddNewUser() => Nav.NavigateTo("/user-editor/0");
+    private void EditUser(User user) => Nav.NavigateTo($"/user-editor/{user.Id}");
+}

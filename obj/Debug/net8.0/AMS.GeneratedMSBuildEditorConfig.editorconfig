@@ -1,0 +1,95 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AMS
+build_property.RootNamespace = AMS
+build_property.ProjectDir = C:\erick\AMS\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\erick\AMS
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/erick/AMS/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/CorrectionForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29ycmVjdGlvbkZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/ExceptionReport.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZXB0aW9uUmVwb3J0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/PunchClock.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHVuY2hDbG9jay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/Supervisor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwZXJ2aXNvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/SupervisorDashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwZXJ2aXNvckRhc2hib2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/TimesheetReport.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGltZXNoZWV0UmVwb3J0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/UserEditor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlckVkaXRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/UserManagement.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlck1hbmFnZW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/erick/AMS/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
